@@ -66,7 +66,8 @@ public class EntregadorRequest {
            .enderecoBairro(enderecoBairro)
            .enderecoCidade(enderecoCidade)
            .enderecoCep(enderecoCep)
-           .enderecoUf(enderecoUf)
+           .enderecoUf(enderecoUf)     
+           .ativo(ativo)     
            .build();
    }
 
