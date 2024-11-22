@@ -3,6 +3,7 @@ package br.com.ifpe.oxefood.modelo.produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import jakarta.transaction.Transactional;
@@ -42,6 +43,15 @@ public class ProdutoService {
 	    
       repository.save(produto);
   }
+
+  @Transactional
+   public void delete(Long id) {
+
+       Produto produto = repository.findById(id).get();
+       produto.setHabilitado(Boolean.FALSE);
+
+       repository.save(produto);
+   }
 
 
 }

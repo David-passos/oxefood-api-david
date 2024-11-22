@@ -3,6 +3,7 @@ package br.com.ifpe.oxefood.modelo.entregador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.entregador.Entregador;
 import br.com.ifpe.oxefood.modelo.entregador.Entregador;
 import jakarta.transaction.Transactional;
@@ -50,8 +51,17 @@ public class EntregadorService {
       entregador.setEnderecoUf(entregadorAlterado.getEnderecoUf());
       entregador.setAtivo(entregadorAlterado.getAtivo());
       
-
       repository.save(entregador);
   }
+
+@Transactional
+   public void delete(Long id) {
+
+       Entregador entregador = repository.findById(id).get();
+       entregador.setHabilitado(Boolean.FALSE);
+
+       repository.save(entregador);
+   }
+
 
 }
