@@ -2,9 +2,14 @@ package br.com.ifpe.oxefood.api.entregador;
 
 import java.time.LocalDate;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.ifpe.oxefood.modelo.entregador.Entregador;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,60 +21,73 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EntregadorRequest {
 
-   private String nome;
+    @NotBlank(message = "O nome é de preenchimento obrigatório")
+    @Length(max = 100, message = "O Nome deverá ter no máximo {max} caracteres")
+    private String nome;
 
-   private String cpf;
+    @NotBlank(message = "O CPF é de preenchimento obrigatório")
+    @CPF
+    private String cpf;
 
-   private String rg;
+    @NotBlank(message = "O RG é de preenchimento obrigatório")
+    private String rg;
 
-   @JsonFormat(pattern = "dd/MM/yyyy")
-   private LocalDate dataNascimento;
+    @Past
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataNascimento;
 
-   private String foneCelular;
+    @Length(min = 8, max = 20, message = "O campo Fone Celular tem que ter entre {min} e {max} caracteres")
+    private String foneCelular;
 
-   private String foneFixo;
+    @Length(min = 8, max = 20, message = "O campo Fone Fixo tem que ter entre {min} e {max} caracteres")
+    private String foneFixo;
 
-   private int qtdEntregasRealizadas;
+    private Integer qtdEntregasRealizadas;
 
-   private double valorFrete;
+    private Double valorFrete;
 
-   private String enderecoRua;
+    @NotBlank(message = "A rua é de preenchimento obrigatório")
+    private String enderecoRua;
 
-   private String enderecoComplemento;
+    private String enderecoComplemento;
 
-   private String enderecoNumero;
+    @NotBlank(message = "O número da resdência é de preenchimento obrigatório")
+    private String enderecoNumero;
 
-   private String enderecoBairro;
+    @NotBlank(message = "O Bairro é de preenchimento obrigatório")
+    private String enderecoBairro;
 
-   private String enderecoCidade;
+    @NotBlank(message = "A Cidade é de preenchimento obrigatório")
+    private String enderecoCidade;
 
-   private String enderecoCep;
+    @NotBlank(message = "O CEP é de preenchimento obrigatório")
+    private String enderecoCep;
 
-   private String enderecoUf;
+    @NotBlank(message = "O Estado é de preenchimento obrigatório")
+    private String enderecoUf;
 
-   private boolean ativo;
+    private boolean ativo;
 
-   public Entregador build() {
+    public Entregador build() {
 
-       return Entregador.builder()
-           .nome(nome)
-           .cpf(cpf)
-           .rg(rg)
-           .dataNascimento(dataNascimento)
-           .foneCelular(foneCelular)
-           .foneFixo(foneFixo)
-           .qtdEntregasRealizadas(qtdEntregasRealizadas)
-           .valorFrete(valorFrete)
-           .enderecoRua(enderecoRua)
-           .enderecoComplemento(enderecoComplemento)
-           .enderecoNumero(enderecoNumero)
-           .enderecoBairro(enderecoBairro)
-           .enderecoCidade(enderecoCidade)
-           .enderecoCep(enderecoCep)
-           .enderecoUf(enderecoUf)     
-           .ativo(ativo)     
-           .build();
-   }
+        return Entregador.builder()
+                .nome(nome)
+                .cpf(cpf)
+                .rg(rg)
+                .dataNascimento(dataNascimento)
+                .foneCelular(foneCelular)
+                .foneFixo(foneFixo)
+                .qtdEntregasRealizadas(qtdEntregasRealizadas)
+                .valorFrete(valorFrete)
+                .enderecoRua(enderecoRua)
+                .enderecoComplemento(enderecoComplemento)
+                .enderecoNumero(enderecoNumero)
+                .enderecoBairro(enderecoBairro)
+                .enderecoCidade(enderecoCidade)
+                .enderecoCep(enderecoCep)
+                .enderecoUf(enderecoUf)
+                .ativo(ativo)
+                .build();
+    }
 
 }
-    

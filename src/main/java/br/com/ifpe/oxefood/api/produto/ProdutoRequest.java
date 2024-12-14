@@ -2,8 +2,10 @@ package br.com.ifpe.oxefood.api.produto;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,17 +18,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProdutoRequest {
 
-   private String codigo;
+    private Long idCategoria;
 
-   private String titulo;
-
-   private String descricao;
-
-   private double valorUnitario;
-
-   private int tempoEntregaMinimo;
-
-   private int tempoEntregaMaximo;
+    @NotBlank(message = "O Código é de preenchimento obrigatório")
+    private String codigo;
+    
+    @NotBlank(message = "O Título é de preenchimento obrigatório")
+    @Length(max = 100, message = "O título deverá ter no máximo {max} caracteres")
+    private String titulo;
+    
+    @NotBlank(message = "A Descrição do produto é de preenchimento obrigatório")
+    private String descricao;
+        
+    private Double valorUnitario;
+    
+    
+    private Integer tempoEntregaMinimo;
+    
+    
+    private Integer tempoEntregaMaximo;
 
    public Produto build() {
 

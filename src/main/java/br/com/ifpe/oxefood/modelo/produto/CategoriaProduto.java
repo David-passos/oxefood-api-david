@@ -1,4 +1,4 @@
-package br.com.ifpe.oxefood.modelo.categoriaProduto;
+package br.com.ifpe.oxefood.modelo.produto;
 
 import java.time.LocalDate;
 import org.hibernate.annotations.SQLRestriction;
@@ -23,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoriaProduto extends EntidadeAuditavel  {
   
-   @Column
+   @Column(nullable = false)
    private String descricao;
 
 

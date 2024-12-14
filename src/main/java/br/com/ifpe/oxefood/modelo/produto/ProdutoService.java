@@ -30,7 +30,7 @@ public class ProdutoService {
   
         return repository.findAll();
     }
-
+    
     public Produto obterPorID(Long id) {
 
         return repository.findById(id).get();
@@ -40,6 +40,7 @@ public class ProdutoService {
    public void update(Long id, Produto produtoAlterado) {
 
       Produto produto = repository.findById(id).get();
+      produto.setCategoria(produtoAlterado.getCategoria());
       produto.setCodigo(produtoAlterado.getCodigo());
       produto.setTitulo(produtoAlterado.getTitulo());
       produto.setDescricao(produtoAlterado.getDescricao());
