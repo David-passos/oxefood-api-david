@@ -1,10 +1,10 @@
-package br.com.ifpe.oxefood.api.categoriaProduto;
+package br.com.ifpe.oxefood.api.produto;
 
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import br.com.ifpe.oxefood.modelo.categoriaProduto.CategoriaProduto;
+import br.com.ifpe.oxefood.modelo.produto.CategoriaProduto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

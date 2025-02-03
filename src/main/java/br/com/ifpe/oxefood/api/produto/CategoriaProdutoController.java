@@ -1,4 +1,4 @@
-package br.com.ifpe.oxefood.api.categoriaProduto;
+package br.com.ifpe.oxefood.api.produto;
 
 
     
@@ -14,10 +14,11 @@ package br.com.ifpe.oxefood.api.categoriaProduto;
     import org.springframework.web.bind.annotation.RequestBody;
     import org.springframework.web.bind.annotation.RequestMapping;
     import org.springframework.web.bind.annotation.RestController;
-    
-    import br.com.ifpe.oxefood.modelo.categoriaProduto.CategoriaProduto;
-    import br.com.ifpe.oxefood.modelo.categoriaProduto.CategoriaProdutoService;
-    import java.util.List;
+
+import br.com.ifpe.oxefood.modelo.produto.CategoriaProduto;
+import br.com.ifpe.oxefood.modelo.produto.CategoriaProdutoService;
+
+import java.util.List;
     
     @RestController
     @RequestMapping("/api/categoriaProduto")
