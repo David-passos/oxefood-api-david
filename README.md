@@ -7,3 +7,10 @@
 
 # O Spring Security é uma biblioteca que fornece proteção, mas também autenticação, autorização e armazenamento de senhas. Sendo que trabalha com vários protocolos para autenticação. Iremos utilizar como protocolo de autenticação o JWT.
 
+
+# Autenticação representa a forma de como o usuário prova quem realmente ele é: username + password, biometrias, etc.
+
+
+# A autorização define o que pode e o que não pode acessar
+
+# Auditoria “... suporte para acompanhar de forma transparente quem criou ou alterou uma entidade e o momento em que isso aconteceu.” Registrar atividades realizadas, Quem, quando, em qual IP
