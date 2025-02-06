@@ -17,6 +17,8 @@ import br.com.ifpe.oxefood.modelo.acesso.UsuarioService;
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.cliente.ClienteService;
 import br.com.ifpe.oxefood.modelo.cliente.EnderecoCliente;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
@@ -25,6 +27,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cliente")
 @CrossOrigin
+@Tag(
+    name = "API Cliente",
+    description = "API responsável pelos servidos de cliente no sistema"
+)
+
 public class ClienteController {
 
     @Autowired
@@ -33,6 +40,10 @@ public class ClienteController {
     @Autowired
     private UsuarioService usuarioService;
 
+     @Operation(
+       summary = "Serviço responsável por salvar um cliente no sistema.",
+       description = "Exemplo de descrição de um endpoint responsável por inserir um cliente no sistema."
+   )
     @PostMapping
     public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest clienteRequest, HttpServletRequest request) {
 
@@ -40,16 +51,28 @@ public class ClienteController {
         return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
     }
 
+    @Operation(
+        summary = "Serviço responsável por listar todos os cliente no sistema."
+        
+    ) 
     @GetMapping
     public List<Cliente> listarTodos() {
         return clienteService.listarTodos();
     }
 
+    @Operation(
+        summary = "Serviço responsável por listar um cliente no sistema."
+    
+    ) 
     @GetMapping("/{id}")
     public Cliente obterPorID(@PathVariable Long id) {
         return clienteService.obterPorID(id);
     }
 
+    @Operation(
+        summary = "Serviço responsável por alterar um cliente no sistema."
+       
+    )
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody @Valid ClienteRequest clienteRequest, HttpServletRequest request){   
 
@@ -57,6 +80,9 @@ public class ClienteController {
         return ResponseEntity.ok().build();
     }
 
+    @Operation(
+        summary = "Serviço responsável por deletar um cliente no sistema."
+    ) 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 

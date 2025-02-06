@@ -47,6 +47,7 @@ public class ClienteRequest {
    @CPF
    private String cpf;
 
+   // tamanho maximo do campo
    @Length(min = 8, max = 20, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
    private String foneCelular;
 
